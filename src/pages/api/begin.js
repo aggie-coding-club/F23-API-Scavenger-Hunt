@@ -10,7 +10,7 @@ export default function handler(req, res) {
       // else if (data["acc"].toLowerCase() !== "aggie coding club") {
       //   res.status(400).json({text:"\nHmmm that's not the correct 'value'\n\nDouble check that you have the acroynm correct."})
       // }
-      res.status(400).json({text: data["acc"], msg: data})
+      res.status(400).json({text: data})
     }
     else if (req.method === 'GET') {
       res.status(200).json({ text: '\nWelcome to the ACC API Scavenger Hunt!!!\n\nStart by creating a POST request on the same URL.\n\nInclude a JSON object with ACC\'s full name. Ex: {"acc", "your_answer_here"}' });
