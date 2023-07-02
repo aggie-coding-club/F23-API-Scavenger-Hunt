@@ -5,7 +5,7 @@ export default function handler(req, res) {
         res.status(400).json({text: "\nOof, make sure that you passed in the correct 'key' and 'value' in your POST method\n"})
       }
       else if (data["acc"].toLowerCase() === "aggie coding club") {
-        res.status(200).json({text:"\nThat's Correct!\n\nFor the next question, make a POST request to\n'url' = https://acc-api-scavenger-hunt.vercel.app/api/numofficers \nwith a JSON object of {'num_officers': 'number of acc officers not counting OITs 😢'}\n\n. Go to https://aggiecodingclub.com to find out!\n"})
+        res.status(200).json({text:"\nThat's Correct!\n\nFor the next question, make a POST request to\n'url' = https://acc-api-scavenger-hunt.vercel.app/api/numofficers \nwith a JSON object of\n{'num_officers': 'number of acc officers not counting OITs 😢'}\n\nGo to https://aggiecodingclub.com to find out!\n"})
       }
       else if (data["acc"].toLowerCase() !== "aggie coding club") {
         res.status(400).json({text:"\nHmmm that's not the correct 'value'\n\nDouble check that you have the acroynm correct.\n"})
