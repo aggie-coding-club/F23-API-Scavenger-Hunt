@@ -1,12 +1,25 @@
 export default function handler(req, res) {
     if (req.method === 'POST') {
-      console.log(req.body)
-      res.status(200).json({text: req.body})
+      data = req.body
+      try {
+        if (data["acc"] === undefined) {
+          res.json({text: "Oof, seems like you didn't include 'acc' as your 'key'"})
+        }
+        else if (data["acc"].toLowerCase() === "aggie coding club") {
+          res.json({text:"\nThat's Correct!\n\nFor the next question, make a POST request to https://acc-api-scavenger-hunt.vercel.app/api/numofficers with a JSON object of key “num_officers” and the value as an integer number as your answer to how many officers ACC has. Go to https://aggiecodingclub.com to find out!"})
+        }
+        else if (data["acc"].toLowerCase() !== "aggie coding club") {
+          res.json({text:"\nHmmm that's not the correct 'value'\n\nDouble check that you have the acroynm correct."})
+        }
+      }
+      catch (err) {
+        res.status(404).json({text: err})
+      }
     }
     else if (req.method === 'GET') {
-      res.status(200).json({ text: 'Welcome to the ACC API Scavenger Hunt!!! Start by creating a POST request on the same URL. Include a JSON object with ACC\'s full name. Ex: {"acc", "your_answer_here"}' });
+      res.status(200).json({ text: '\nWelcome to the ACC API Scavenger Hunt!!!\n\n Start by creating a POST request on the same URL.\nInclude a JSON object with ACC\'s full name. Ex: {"acc", "your_answer_here"}' });
     }
     else {
-      res.status(404).json({text: 'Doesn\'t support the '+req.method+' method'})
+      res.json({text: 'Doesn\'t support the '+req.method+' method'})
     }
 }
