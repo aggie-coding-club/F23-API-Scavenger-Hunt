@@ -10,7 +10,7 @@ export default async function handler (req, res) {
         res.status(400).send(e)
       }
     }
-    if (req.method === "POST") {
+    else if (req.method === "POST") {
       try {
         const data = req.body;
         if (!data["human"]) {
@@ -24,17 +24,17 @@ export default async function handler (req, res) {
         res.status(400).send(e)
       }
     }
-    if (req.method === "PUT") {
+    else if (req.method === "PUT") {
       try {
         const data = req.body
       } catch(e) {
         res.status(400).send(e)
       }
     }
-    if (req.method === "PATCH") {
+    else if (req.method === "PATCH") {
 
     }
-    if (req.method === "DELETE") {
+    else if (req.method === "DELETE") {
 
     }
     else {
