@@ -2,6 +2,7 @@ import { db } from "@/firebase"
 import { getDoc, doc } from "firebase/firestore";
 
 export default async function handler (req, res) {
+
     if (req.method === "GET") {
       try {
         const querySnapshot = await getDoc(doc(db, "test", "person"))
@@ -10,20 +11,22 @@ export default async function handler (req, res) {
         res.status(400).send(e)
       }
     }
+
     else if (req.method === "POST") {
       try {
         const data = req.body;
-        if (!data["human"]) {
-          res.status(400).send("eww ur not human~~")
-        }
-        else {
+        if (data["human"].toLowerCase() === "true") {
           await updateDoc(doc(db, "test", "person"), {"human": true})
           res.status(200).send("yaya ur human!")
         }
+        else {
+          res.status(400).send("eww ur not human~~")
+        }
       } catch(e) {
-        res.status(400).send(e)
+        res.status(400).send("error occurred")
       }
     }
+
     else if (req.method === "PUT") {
       try {
         const data = req.body
@@ -31,12 +34,15 @@ export default async function handler (req, res) {
         res.status(400).send(e)
       }
     }
+
     else if (req.method === "PATCH") {
 
     }
+
     else if (req.method === "DELETE") {
 
     }
+    
     else {
       res.status(405).send("\n\
       Doesn't support the "+req.method+" method\
