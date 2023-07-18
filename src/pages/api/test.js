@@ -23,7 +23,7 @@ export default async function handler (req, res) {
           res.status(400).send("eww ur not human~~")
         }
       } catch(e) {
-        res.status(400).send("error occurred", e)
+        res.status(400).send("error occurred")
       }
     }
 
