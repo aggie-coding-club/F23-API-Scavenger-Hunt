@@ -16,7 +16,7 @@ export default async function handler (req, res) {
       try {
         const data = req.body;
         if (data["human"].toLowerCase() === "true") {
-          await updateDoc(doc(db, "test", "person"), {"human": true})
+          await updateDoc(doc(db, "test", "person"), data)
           res.status(200).send("yaya ur human!")
         }
         else {
@@ -42,7 +42,7 @@ export default async function handler (req, res) {
     else if (req.method === "DELETE") {
 
     }
-    
+
     else {
       res.status(405).send("\n\
       Doesn't support the "+req.method+" method\
