@@ -16,14 +16,14 @@ export default async function handler (req, res) {
       try {
         const data = req.body;
         if (data["human"].toLowerCase() === "true") {
-          await updateDoc(doc(db, "test", "person"), data)
           res.status(200).send("yaya ur human!")
+          await updateDoc(doc(db, "test", "person"), data)
         }
         else {
           res.status(400).send("eww ur not human~~")
         }
       } catch(e) {
-        res.status(400).send("error occurred")
+        res.status(400).send("error occurred", e)
       }
     }
 
