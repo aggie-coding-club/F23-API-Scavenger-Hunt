@@ -17,7 +17,7 @@ export default async function handler (req, res) {
         const data = req.body;
         if (data["human"].toLowerCase() === "true") {
           res.status(200).send("yaya ur human!")
-          await updateDoc(doc(db, "test", "person"), data)
+          // await updateDoc(doc(db, "test", "person"), data)
         }
         else {
           res.status(400).send("eww ur not human~~")
