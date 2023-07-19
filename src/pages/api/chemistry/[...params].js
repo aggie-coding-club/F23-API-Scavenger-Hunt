@@ -1,17 +1,25 @@
 export default function handler(req, res) {
+
+    // *GET request logic
     if (req.method === 'GET') {
-      if (req.query["params"].length > 1) {
-        res.status(400).send("\nWoooahh there buddy! Make sure you're sending to the right route!\n")
-      }
-      const param = req.query["params"][0]
+
+      const param = req.query["params"][0] // * get user answer
+
+      // * if correct answer
       if (param.toLowerCase() === process.env.ANSWER_7) {
-        res.status(200).send("\nDamn I'm fr running out of compliments over here 😩.\n\nFor the final question, send a POST request to https://acc-api-scavenger-hunt.vercel.app/api/top \nwith the name of the repository on the ACC GitHub with the most stars in the key, value pair of {'proj':your_answer}\n\nHint hint: you can sort repositories by stars in GitHub\n");
+        res.status(200).send("\nHello to you too 😊.\n\nFor the final question, send a POST request to the 'api/top' route.\n\nInclude a JSON object with the name of the most starred repository on the ACC GitHub\nFormat: {'proj':your_answer}\n\nHint hint: include the dash in your answer\n");
       }
+
+      // * if not correct answer
       else {
-        res.status(400).send("\nWrong answer, try using the internet\n")
+        res.status(400).send("\nIncorrect. How about using the internet?\n")
       }
+
     }
+
+    // !only GET & POST request allowed --> error otherwise
     else {
       res.status(405).send('\nDoesn\'t support the '+req.method+' method\n')
     }
+
 } 
