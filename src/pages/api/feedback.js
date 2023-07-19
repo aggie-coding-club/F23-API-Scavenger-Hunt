@@ -1,4 +1,4 @@
-import {serverTimestamp, doc, addDoc, collection} from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebase";
 
 export default async function handler(req, res) {
