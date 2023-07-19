@@ -49,7 +49,7 @@ export default async function handler (req, res) {
 
     else if (req.method === "DELETE") {
       try {
-        await deleteDoc(doc(db, "test", "person"), data)
+        await deleteDoc(doc(db, "test", "person"))
         res.status(200).send("deleted")
       } catch(e) {
         res.status(400).send(e)
