@@ -15,7 +15,9 @@ export default async function handler(req, res) {
 
         // * if key is correct store value
         else {
-            await addDoc(collection(db, "feedback"), {data})
+            await addDoc(collection(db, "feedback"), {
+                "feedback": data["feedback"]
+            })
             res.status(200).send("\nThanks for you're feedback 😡. Oops wrong face. Holdup...\n\n😁 There we go!\n")
         }
     }
